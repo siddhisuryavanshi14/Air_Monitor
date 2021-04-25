@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1001790760539",
+    "project_id": "air-monitor-d1330",
+    "storage_bucket": "air-monitor-d1330.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001790760539:android:ead6e8541b05b21af0017e",
+        "android_client_info": {
+          "package_name": "com.example.airmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001790760539-865cskcgjkk1ulm471vp9en4d3mhqs4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.airmonitor",
+            "certificate_hash": "80b9b54de20cb8031077720293f5b946b72abb3e"
+          }
+        },
+        {
+          "client_id": "1001790760539-2ojn0bk3ui09as2p8noebh8dma59o7s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzB_Yim9rkqQnS6A7YqV-TcvUkTusuWTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001790760539-2ojn0bk3ui09as2p8noebh8dma59o7s0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
