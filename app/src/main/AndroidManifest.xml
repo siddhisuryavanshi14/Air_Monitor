@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AirMonitor">
         <activity
+            android:name=".AnalysisActivity"
+            android:exported="true" />
+        <activity
             android:name=".ShowDataActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

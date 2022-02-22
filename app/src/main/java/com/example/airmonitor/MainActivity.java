@@ -39,13 +39,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 import static android.view.View.GONE;
 
@@ -120,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         rootNode=FirebaseDatabase.getInstance();
         reference=rootNode.getReference("Data");
+        DecimalFormat df=new DecimalFormat("#.00");
 
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -150,9 +154,16 @@ public class MainActivity extends AppCompatActivity {
                                 String entry_id = feed.getString("entry_id");
                                 air_quality = feed.getString("field1");
                                 pressureTH = feed.getString("field2")+" hPa";
-                                humidityTH = feed.getString("field3")+" %";
-                                dewPointTH = feed.getString("field4")+" °F";
-                                temperatureTH = feed.getString("field5")+" °F";
+                                if (!feed.getString("field4").equals("nan")) {
+                                    humidityTH = feed.getString("field3").trim() + " %";
+                                    double d=(Double.parseDouble(feed.getString("field4")) - 32) / 1.8;
+                                    dewPointTH = String.valueOf(df.format(d)) + " °C";
+                                }else {
+                                    humidityTH="NA";
+                                    dewPointTH = "NA";
+                                }
+                                double t=(Double.parseDouble(feed.getString("field5").split("\\r\\n\\r\\n")[0])-32)/1.8;
+                                temperatureTH = String.valueOf(df.format(t)) +" °C";
                                 if (lastEntry.equals(entry)) {
                                     Double air = Double.parseDouble(air_quality);
                                     runOnUiThread(() -> setValues(air));
@@ -198,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startActivity(new Intent(this,AnalysisActivity.class));
     }
 
     private void addData(DatabaseReference reference,HelperClass helperClass,String id) {

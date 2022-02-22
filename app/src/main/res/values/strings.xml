@@ -11,4 +11,6 @@
     <string name="no_data">No Data</string>
     <string name="temperature">Temperature</string>
     <string name="preference_file_name">App Preferences</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="analysis">Analysis</string>
 </resources>
