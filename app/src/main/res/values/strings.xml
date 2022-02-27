@@ -13,4 +13,8 @@
     <string name="preference_file_name">App Preferences</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="analysis">Analysis</string>
+    <string name="air_and_humidity_correlation">Air and Humidity Correlation</string>
+    <string name="aqi_temperature_humidity_dew_point_pressure">AQI, Temperature, Humidity, Dew Point, Pressure</string>
+    <string name="temperature_3d_bar_chart">Temperature 3D Bar Chart</string>
+    <string name="show_visualizations">Show Visualizations</string>
 </resources>

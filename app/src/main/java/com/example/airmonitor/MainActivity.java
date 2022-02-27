@@ -208,8 +208,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Check Internet Connectivity",Toast.LENGTH_LONG).show();
             }
         });
-
-        startActivity(new Intent(this,AnalysisActivity.class));
     }
 
     private void addData(DatabaseReference reference,HelperClass helperClass,String id) {

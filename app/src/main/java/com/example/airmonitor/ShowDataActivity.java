@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -32,6 +34,7 @@ public class ShowDataActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView txtNoData;
     DatabaseReference reference;
+    Button show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class ShowDataActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         recyclerData = findViewById(R.id.recyclerData);
+        show=findViewById(R.id.show);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerData.setLayoutManager(layoutManager);
 
@@ -73,6 +77,8 @@ public class ShowDataActivity extends AppCompatActivity {
 
             }
         });
+        
+        show.setOnClickListener(v -> startActivity(new Intent(ShowDataActivity.this,AnalysisActivity.class)));
 
         back.setOnClickListener(v -> onBackPressed());
     }
