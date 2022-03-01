@@ -17,7 +17,7 @@ import com.squareup.picasso.Transformation;
 
 public class AnalysisActivity extends AppCompatActivity {
 
-    ImageView img1,img2,img3,imgBack;
+    ImageView img1,img2,img3,img4,imgBack;
     private ScaleGestureDetector scaleGestureDetector;
     private float mScaleFactor = 1.0f;
 
@@ -29,6 +29,7 @@ public class AnalysisActivity extends AppCompatActivity {
         img1=findViewById(R.id.img1);
         img2=findViewById(R.id.img2);
         img3=findViewById(R.id.img3);
+        img4=findViewById(R.id.img4);
         imgBack=findViewById(R.id.imgBack);
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
@@ -45,6 +46,11 @@ public class AnalysisActivity extends AppCompatActivity {
                 .placeholder(R.drawable.air)
                 .resize(530,380)
                 .into(img3);
+        Picasso.get().load("https://s3.amazonaws.com/images.thingspeak.com/plugins/450644/_4CtWgx5sTwLpcfi33B2lA.png?1646149734720")
+                .placeholder(R.drawable.air)
+                .resize(530,380)
+                .into(img4);
+
 
         imgBack.setOnClickListener(v -> onBackPressed());
 
