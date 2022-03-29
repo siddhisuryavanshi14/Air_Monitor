@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -25,7 +26,8 @@ public class WebActivity extends AppCompatActivity {
         browser.getSettings().setLoadsImagesAutomatically(true);
         browser.getSettings().setJavaScriptEnabled(true);
         browser.getSettings().setUseWideViewPort(true);
-        browser.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        browser.setHorizontalScrollBarEnabled(false);
+        browser.setVerticalScrollBarEnabled(false);
         String html="<iframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\""+url+"\"></iframe>";
         browser.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
 
