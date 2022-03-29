@@ -2,14 +2,22 @@ package com.example.airmonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -17,60 +25,100 @@ import com.squareup.picasso.Transformation;
 
 public class AnalysisActivity extends AppCompatActivity {
 
-    ImageView img1,img2,img3,img4,imgBack;
-    private ScaleGestureDetector scaleGestureDetector;
-    private float mScaleFactor = 1.0f;
+    //ImageView img2,img3,img4;
+    ImageView imgBack;
+    ListView listView;
+    //WebView img1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis);
 
-        img1=findViewById(R.id.img1);
+        /*img1=findViewById(R.id.img1);
         img2=findViewById(R.id.img2);
         img3=findViewById(R.id.img3);
-        img4=findViewById(R.id.img4);
+        img4=findViewById(R.id.img4);*/
         imgBack=findViewById(R.id.imgBack);
-        scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+        listView=findViewById(R.id.listView);
 
-        //web1.loadUrl("https://thingspeak.com/apps/matlab_visualizations/449745");
-        Picasso.get().load("https://s3.amazonaws.com/images.thingspeak.com/plugins/450140/Gz3siNUL1vTByJj-ekfosw.png?1645976317264")
+        String[] visualisations={"Air Quality v/s Time","Pressure v/s Time","Humidity v/s Time","Dew Point v/s Time","Temperature v/s Time",
+                getString(R.string.temp_and_humidity_correlation),getString(R.string.histograms_for_aqi_temperature_humidity_dew_point_pressure),
+                getString(R.string.temperature_3d_bar_chart),getString(R.string._3_day_temperature_comparison)};
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1,visualisations);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/channels/1335871/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Air+Quality+v%2Fs+Time&type=line"));
+                        break;
+                    case 1:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/channels/1335871/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Pressure+v%2Fs+Time&type=line"));
+                        break;
+                    case 2:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/channels/1335871/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity+v%2Fs+Time&type=line"));
+                        break;
+                    case 3:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/channels/1335871/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Dew+Point+v%2Fs+Time&type=line"));
+                        break;
+                    case 4:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/channels/1335871/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature+v%2Fs+Time&type=line"));
+                        break;
+                    case 5:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/apps/matlab_visualizations/450140"));
+                        break;
+                    case 6:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/apps/matlab_visualizations/450154"));
+                        break;
+                    case 7:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/apps/matlab_visualizations/450172"));
+                        break;
+                    case 8:
+                        startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
+                                "https://thingspeak.com/apps/matlab_visualizations/450644"));
+                        break;
+                }
+            }
+        });
+
+        /*img1.loadUrl("https://thingspeak.com/apps/matlab_visualizations/450140");
+        Picasso.get().load("https://thingspeak.com/apps/matlab_visualizations/450140")
                 .placeholder(R.drawable.air)
                 .resize(530,380)
                 .into(img1);
-        Picasso.get().load("https://s3.amazonaws.com/images.thingspeak.com/plugins/450154/UN4Z1KPKdfEre8HSxL1uHQ.png?1645976345746")
+        Picasso.get().load("https://thingspeak.com/apps/matlab_visualizations/450154")
                 .placeholder(R.drawable.air)
                 .resize(530,380)
                 .into(img2);
-        Picasso.get().load("https://s3.amazonaws.com/images.thingspeak.com/plugins/450172/afy-KBsGQxX6pM1V0pdQzA.png?1645976362762")
+        Picasso.get().load("https://thingspeak.com/apps/matlab_visualizations/450172")
                 .placeholder(R.drawable.air)
                 .resize(530,380)
                 .into(img3);
-        Picasso.get().load("https://s3.amazonaws.com/images.thingspeak.com/plugins/450644/_4CtWgx5sTwLpcfi33B2lA.png?1646149734720")
+        Picasso.get().load("https://thingspeak.com/apps/matlab_visualizations/450644")
                 .placeholder(R.drawable.air)
                 .resize(530,380)
-                .into(img4);
+                .into(img4);*/
 
 
         imgBack.setOnClickListener(v -> onBackPressed());
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        scaleGestureDetector.onTouchEvent(motionEvent);
-        return true;
+    private void goTooUrl(String url) {
+        Uri uriUrl= Uri.parse(url);
+        Intent launchBrowser=new Intent(Intent.ACTION_VIEW,uriUrl);
+        startActivity(launchBrowser);
     }
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-        @Override
-        public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
-            mScaleFactor *= scaleGestureDetector.getScaleFactor();
-            mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 10.0f));
-            img3.setScaleX(mScaleFactor);
-            img3.setScaleY(mScaleFactor);
-            return true;
-        }
-    }
-
 
 }

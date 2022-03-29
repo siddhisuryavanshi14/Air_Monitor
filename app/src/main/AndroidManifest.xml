@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AirMonitor">
         <activity
+            android:name=".WebActivity"
+            android:exported="true" />
+        <activity
             android:name=".AnalysisActivity"
             android:exported="true" />
         <activity
