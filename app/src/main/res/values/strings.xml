@@ -17,5 +17,5 @@
     <string name="histograms_for_aqi_temperature_humidity_dew_point_pressure">Histograms for Temperature, Humidity, Pressure, Air Quality and Dew Point</string>
     <string name="temperature_3d_bar_chart">Temperature 3D Bar Chart</string>
     <string name="show_visualizations">Show Visualizations</string>
-    <string name="_3_day_temperature_comparison">3 Day Temperature Comparison</string>
+    <string name="_3_day_comparison">3 Day Air Quality Comparison</string>
 </resources>
