@@ -37,7 +37,7 @@ public class AnalysisActivity extends AppCompatActivity {
 
         String[] visualisations={"Air Quality","Pressure","Humidity","Dew Point","Temperature",
                 getString(R.string.temp_and_humidity_correlation),getString(R.string.histograms_for_aqi_temperature_humidity_dew_point_pressure),
-                getString(R.string.temperature_3d_bar_chart),getString(R.string._3_day_comparison)};
+                getString(R.string._3d_bar_chart),getString(R.string._3_day_comparison)};
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1,visualisations);
         listView.setAdapter(adapter);
 
