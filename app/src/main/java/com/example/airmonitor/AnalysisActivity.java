@@ -45,23 +45,23 @@ public class AnalysisActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
-                            "https://thingspeak.com/channels/1335871/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Air+Quality&type=line"));
+                            "https://thingspeak.com/channels/1335871/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Air+Quality&type=line&xaxis=Time"));
                     break;
                 case 1:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
-                            "https://thingspeak.com/channels/1335871/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Pressure&type=line"));
+                            "https://thingspeak.com/channels/1335871/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Pressure&type=line&xaxis=Time"));
                     break;
                 case 2:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
-                            "https://thingspeak.com/channels/1335871/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity&type=line"));
+                            "https://thingspeak.com/channels/1335871/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity&type=line&xaxis=Time"));
                     break;
                 case 3:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
-                            "https://thingspeak.com/channels/1335871/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Dew+Point&type=line"));
+                            "https://thingspeak.com/channels/1335871/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Dew+Point&type=line&xaxis=Time"));
                     break;
                 case 4:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
-                            "https://thingspeak.com/channels/1335871/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature&type=line"));
+                            "https://thingspeak.com/channels/1335871/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature&type=line&xaxis=Time"));
                     break;
                 case 5:
                     startActivity(new Intent(AnalysisActivity.this,WebActivity.class).putExtra("url",
