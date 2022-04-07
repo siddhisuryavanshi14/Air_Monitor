@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     //deleteData(reference);
                     RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                    String url = "https://api.thingspeak.com/channels/1335871/feeds.json?api_key=P13OEXK1V8BRM8AG&results=2";
+                    String url = "https://api.thingspeak.com/channels/1335871/feeds.json?api_key=P13OEXK1V8BRM8AG&results=5";
                     JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
                         try {
                             JSONObject channelData = response.getJSONObject("channel");
